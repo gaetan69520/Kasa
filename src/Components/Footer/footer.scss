@@ -1,0 +1,27 @@
+/* Variables Sass */
+$backgroundColor: #000;
+$textColor: white;
+
+.footer {
+  background: $backgroundColor; 
+  color: $textColor; 
+  margin: 0px auto 0px auto;
+  
+  a {
+    color: $textColor; 
+    text-align: center;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+  }
+  
+  p {
+    font-size: 24px;
+  }
+  
+  svg {
+    padding: 60px 0px 0px 132px;
+  }
+}
+
+   

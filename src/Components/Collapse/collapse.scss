@@ -1,0 +1,58 @@
+/* Variables Sass */
+$Gray: #F6F6F6;
+$PrimaryColor: #FF6060;
+
+.rotate {
+  transition: transform 0.3s ease-in-out;
+}
+
+.rotate.rotate-180 {
+  transform: rotate(180deg);
+}
+
+.menu {
+  display: grid;
+  width: 90%;
+  align-items: center;
+  gap: 40px;
+  font-size: 22px;
+  padding-bottom: 40px;
+  font-weight: 400;
+  margin-left: auto;
+  margin-right: 2%;
+}
+
+.menu_box {
+  background-color: $PrimaryColor; 
+  border-radius: 5px;
+  padding: 10px;
+  margin: 0;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+}
+
+.menu_animation {
+  border-radius: 10px 10px 5px 5px;
+  background: $Gray; 
+  transition: all 0.3s ease;
+  margin: 0;
+  color: $PrimaryColor; 
+  padding: 10px;
+  font-size: 20px;
+  font-weight: 400;
+  width: 90%;
+}
+
+.menu_visible {
+  opacity: 1;
+  max-height: 500px;
+  transition: opacity 0.5s ease, max-height 0.3s ease, 0.3s ease-in-out;
+}
+
+.menu_hidden {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.5s ease, max-height 0.3s ease, 0.3s ease-in-out;
+}
