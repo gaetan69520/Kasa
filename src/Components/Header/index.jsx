@@ -35,7 +35,7 @@ function Header() {
         >
           <image xlinkHref={logoSvg} />
         </svg>
-        <div className="header_link">
+        <div className="header_link the_titre ">
           {/* Liens de navigation */}
           <Link
             to="/"

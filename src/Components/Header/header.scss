@@ -31,7 +31,10 @@ $mainColor: #FF6060;
   @media screen and (max-width: 768px) {
     padding: 10px;
     justify-content: center;
-    gap: 43px;
+    gap: 50px;
     margin: 5px;
+    .the_titre {
+      text-transform: uppercase; 
+    }
   }
 }

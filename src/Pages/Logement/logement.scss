@@ -76,7 +76,9 @@ $error-color: #FF6060;
     display: flow;
   }
 }
-
+.collapse .menu_animation{
+  width: 100%;
+}
 .collapse .menu {
   width: 100%;
   align-items: baseline;

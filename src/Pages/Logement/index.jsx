@@ -4,57 +4,30 @@ import React, { useState, useEffect } from "react";
 import data from "../../data/data.json";
 import { useParams, useNavigate } from "react-router-dom";
 import Collapse from "../../Components/Collapse/index";
-import Rating from "../../Components/Rating/index";
+import {  RatingList } from "../../Components/Rating";
 import Gallery from "../../Components/Gallery/index";
 
-// Composant Logement qui affiche les détails d'un logement
 function Logement() {
-  // Extraction de l'ID du logement à partir de l'URL
   const { logementId } = useParams();
-
-  // État pour stocker les détails du logement actuel
   const [currentLogement, setCurrentLogement] = useState(null);
-
-  // État pour suivre l'index de la photo actuellement affichée
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
-
-  // Utilisation de la fonction useNavigate pour gérer la navigation
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Recherche du logement correspondant à l'ID dans le tableau de données "data"
     const logement = data.find(
       (logement) => logement.identifiant === logementId
     );
 
     if (logement) {
-      setCurrentLogement(logement); // Met à jour les détails du logement actuel
+      setCurrentLogement(logement);
     } else {
-      // Redirige l'utilisateur vers la page d'erreur s'il n'y a pas de logement correspondant
       navigate("/error");
     }
   }, [logementId, navigate]);
 
-  // Fonction pour gérer le clic sur les flèches gauche et droite pour naviguer entre les photos du logement
-  const handleArrowClick = (direction) => {
-    let newIndex;
-    if (direction === "left") {
-      newIndex =
-        currentPhotoIndex === 0
-          ? currentLogement["des photos"].length - 1
-          : currentPhotoIndex - 1;
-    } else if (direction === "right") {
-      newIndex =
-        currentPhotoIndex === currentLogement["des photos"].length - 1
-          ? 0
-          : currentPhotoIndex + 1;
-    }
-    setCurrentPhotoIndex(newIndex); // Met à jour l'index de la photo actuellement affichée
-  };
-
-  // Si aucun logement correspondant n'a été trouvé, ne rien afficher
+  
   if (!currentLogement) {
-    return null;
+    return null; 
   }
 
   return (
@@ -62,7 +35,7 @@ function Logement() {
       <Gallery
         images={currentLogement["des photos"]}
         currentPhotoIndex={currentPhotoIndex}
-        handleArrowClick={handleArrowClick}
+        setCurrentPhotoIndex={setCurrentPhotoIndex}
       />
       <div className="logement_container">
         <div className="texte">
@@ -97,17 +70,13 @@ function Logement() {
             ))}
           </div>
           <div className="note">
-            {Array.from({ length: 5 }).map((_, index) => (
-              <Rating key={index} filled={index < currentLogement.note} />
-            ))}
+          <RatingList currentLogement={currentLogement} />
           </div>
         </div>
 
         <div className="hidd">
           <div className="rating">
-            {Array.from({ length: 5 }).map((_, index) => (
-              <Rating key={index} filled={index < currentLogement.note} />
-            ))}
+          <RatingList currentLogement={currentLogement} />
           </div>
           <div className="hote_section">
             <div className="hote-details">
